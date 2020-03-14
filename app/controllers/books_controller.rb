@@ -4,12 +4,13 @@ class BooksController < ApplicationController
 
   def show
     @user = User.find(current_user.id)
-  	@book = Book.find(params[:id])
+    @book = Book.new
+  	@book_detail = Book.find(params[:id])
+    @book_comment = BookComment.new
   end
 
   def index
     @user = User.find(current_user.id)
-    @users = User.all
     @book = Book.new
   	@books = Book.all #一覧表示するためにBookモデルの情報を全てくださいのall
   end
@@ -30,8 +31,6 @@ class BooksController < ApplicationController
   def edit
   	@book = Book.find(params[:id])
   end
-
-
 
   def update
   	@book = Book.find(params[:id])
